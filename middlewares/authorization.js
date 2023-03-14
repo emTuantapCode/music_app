@@ -8,7 +8,7 @@ const verifyToken = asyncHandler(async (req, res, next) => {
             if (err) {
                 return res.status(401).json({
                     success: false,
-                    mes: 'Invalid access token'
+                    mes: err.message
                 })
             }
             req.user = user
@@ -22,12 +22,17 @@ const verifyToken = asyncHandler(async (req, res, next) => {
     }
 })
 const isAdmin = (req, res, next) => {
-    const { role } = req.user
-    if (role !== 'admin')
-        throw new Error('Require Admin Role')
+    const { vip } = req.user
+    if (+vip !== 2) throw new Error('Require Admin Role')
+    next()
+}
+const isVip = (req, res, next) => {
+    const { vip } = req.user
+    if (+vip === 0) throw new Error('Require Admin Role')
     next()
 }
 module.exports = {
     verifyToken,
     isAdmin,
+    isVip
 }

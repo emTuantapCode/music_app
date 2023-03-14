@@ -7,43 +7,29 @@ var musicShema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    src: {
-        type: String,
+    data: {
+        type: Buffer,
         required: true,
     },
     avatar: {
-        type: String,
-    },
-    type: {
-        type: String,
-        enum: ['music', 'sfx']
-    },
-    duration: {
-        type: Number,
-        require: true
-    },
-    seller: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
+        type: Buffer,
+        required: true,
     },
     artist: {
         type: mongoose.Types.ObjectId,
         ref: 'Artist'
     },
-    label: {
-        type: Array,
+    countListen: {
+        type: Number,
+        default: 600
     },
     category: {
-        type: String,
-        require: true
-    },
-    price: {
-        type: Number,
-        require: true
+        type: mongoose.Types.ObjectId,
+        ref: 'Category'
     },
     copyright: {
-        type: String,
-        require: true
+        type: Boolean,
+        default: false
     }
 });
 

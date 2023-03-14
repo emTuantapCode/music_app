@@ -20,7 +20,7 @@ var albumSchema = new mongoose.Schema({
     },
     author: {
         type: mongoose.Types.ObjectId,
-        ref: 'User'
+        ref: 'Artist'
     }
 });
 

@@ -7,19 +7,29 @@ var artistSchema = new mongoose.Schema({
         required: true,
     },
     avatar: {
+        type: Buffer,
+        default: null
+    },
+    avatarDefault: {
         type: String,
+        default: 'https://d2oet5a29f64lj.cloudfront.net/img-data/w/2480/highlighted%20composers/dev_BluesSaraceno2.jpg.webp'
     },
     dateOfBirth: {
-        type: Date,
+        type: String,
     },
     dateOfDeath: {
-        type: Date,
+        type: String,
     },
     bio: {
-        type: String
+        type: String,
+        require: true
     },
     thumbnail: {
-        type: String
+        type: Buffer
+    },
+    thumbnailDefault: {
+        type: String,
+        default: 'https://cdn.artlist.io/artlist-images/727416_SOURWAH_Cover_-_C2_-_2.5K.jpg'
     }
 });
 
